@@ -58,13 +58,11 @@ def array_to_bytes(np_array):
     for i in range(no_bytes):
 
         # splitting the sequence into 8 bit chunks
-        slice = np_array[i*8:np.min([(i+1)*8,np_array.size])]
+        slice = np_array[i*8:np.min([(i+1)*8,np_array.size])].astype(np.int)
 
         # padding the last byte if nescessary
         if slice.size < 8:
             slice = np.append(slice,(8-slice.size)*[False])
-            print('padded')
-
 
         result.append(int(''.join(slice.astype(str)),2))
 
