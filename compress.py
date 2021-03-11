@@ -1,4 +1,5 @@
 import zlib
+import numpy as np
 
 # takes in a array of 1s and 0s
 # and creates a list of bytes
@@ -21,5 +22,5 @@ def array_to_bytes(np_array):
 
 def computable_info_density(np_array):
     byte_array = array_to_bytes(np_array)
-    comp = zlib.compress(byte_array)
+    comp = zlib.compress(byte_array,level=9)
     return len(comp)/len(byte_array)
